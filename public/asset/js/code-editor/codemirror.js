@@ -1953,7 +1953,7 @@
       forceUpdate: false,      // Used to force a redraw
       updateInput: null,       // Whether to reset the input textarea
       typing: false,           // Whether this reset should be careful to leave existing text (for compositing)
-      changeObjs: null,        // Accumulated changes, for firing change events
+      changeObjs: null,        // Accumulated changes, for firing change Event
       cursorActivityHandlers: null, // Set of handlers to fire cursorActivity on
       cursorActivityCalled: 0, // Tracks which cursorActivity handlers have been called already
       selectionChanged: false, // Whether the selection needs to be redrawn
@@ -1988,7 +1988,7 @@
     } while (i < callbacks.length);
   }
 
-  // Finish an operation, updating the display and signalling delayed events
+  // Finish an operation, updating the display and signalling delayed Event
   function endOperation(cm) {
     var op = cm.curOp, group = op.ownsGroup;
     if (!group) return;
@@ -2105,7 +2105,7 @@
       if (op.scrollToPos.isCursor && cm.state.focused) maybeScrollWindow(cm, coords);
     }
 
-    // Fire events for markers that are hidden/unidden by editing or
+    // Fire Event for markers that are hidden/unidden by editing or
     // undoing
     var hidden = op.maybeHiddenMarkers, unhidden = op.maybeUnhiddenMarkers;
     if (hidden) for (var i = 0; i < hidden.length; ++i)
@@ -2126,7 +2126,7 @@
         updateScrollbars(cm); // (Issue #2562)
     }
 
-    // Fire change events, and delayed event handlers
+    // Fire change Event, and delayed event handlers
     if (op.changeObjs)
       signal(cm, "changes", cm, op.changeObjs);
   }
@@ -2557,7 +2557,7 @@
       if (d.scroller.clientHeight) setScrollLeft(cm, d.scrollbarH.scrollLeft);
     });
 
-    // Listen to wheel events in order to try and update the viewport on time.
+    // Listen to wheel Event in order to try and update the viewport on time.
     on(d.scroller, "mousewheel", function(e){onScrollWheel(cm, e);});
     on(d.scroller, "DOMMouseScroll", function(e){onScrollWheel(cm, e);});
 
@@ -2952,7 +2952,7 @@
   }
 
   // Kludge to work around strange IE behavior where it'll sometimes
-  // re-fire a series of drag-related events right after the drop (#1551)
+  // re-fire a series of drag-related Event right after the drop (#1551)
   var lastDrop = 0;
 
   function onDrop(e) {
@@ -3051,10 +3051,10 @@
     if (cm.display.scrollbarH.scrollLeft != val) cm.display.scrollbarH.scrollLeft = val;
   }
 
-  // Since the delta values reported on mouse wheel events are
+  // Since the delta values reported on mouse wheel Event are
   // unstandardized between browsers and even browser versions, and
   // generally horribly unpredictable, this code starts by measuring
-  // the scroll effect that the first few mouse wheel events have,
+  // the scroll effect that the first few mouse wheel Event have,
   // and, from that, detects the way it can convert deltas to pixel
   // offsets afterwards.
   //
@@ -3524,7 +3524,7 @@
     var source = type == "undo" ? hist.done : hist.undone, dest = type == "undo" ? hist.undone : hist.done;
 
     // Verify that there is a useable event (so that ctrl-z won't
-    // needlessly clear selection events)
+    // needlessly clear selection Event)
     for (var i = 0; i < source.length; i++) {
       event = source[i];
       if (allowSelectionOnly ? event.ranges && !event.equals(doc.sel) : !event.ranges)
@@ -6822,8 +6822,8 @@
   // HISTORY
 
   function History(startGen) {
-    // Arrays of change events and selections. Doing something adds an
-    // event to done and clears undo. Undoing moves events from done
+    // Arrays of change Event and selections. Doing something adds an
+    // event to done and clears undo. Undoing moves Event from done
     // to undone, redoing moves them in the other direction.
     this.done = []; this.undone = [];
     this.undoDepth = Infinity;
@@ -6845,7 +6845,7 @@
     return histChange;
   }
 
-  // Pop all selection events off the end of a history array. Stop at
+  // Pop all selection Event off the end of a history array. Stop at
   // a change event.
   function clearSelectionEvents(array) {
     while (array.length) {
@@ -6856,7 +6856,7 @@
   }
 
   // Find the top change event in the history. Pop off selection
-  // events that are in the way.
+  // Event that are in the way.
   function lastChangeEvent(hist, force) {
     if (force) {
       clearSelectionEvents(hist.done);
@@ -7021,7 +7021,7 @@
     }
   }
 
-  // Tries to rebase an array of history events given a change in the
+  // Tries to rebase an array of history Event given a change in the
   // document. If the change touches the same lines as the event, the
   // event, and everything 'behind' it, is discarded. If the change is
   // before the event, the event's positions are updated. Uses a
@@ -7131,10 +7131,10 @@
 
   var orphanDelayedCallbacks = null;
 
-  // Often, we want to signal events at a point where we are in the
+  // Often, we want to signal Event at a point where we are in the
   // middle of some work, but don't want the handler to start calling
   // other methods on the editor, which might be in an inconsistent
-  // state or simply not expect any other events to happen.
+  // state or simply not expect any other Event to happen.
   // signalLater looks whether there are any handlers, and schedules
   // them to be executed when the last operation ends, or, if no
   // operation is active, when a timeout fires.
@@ -7161,7 +7161,7 @@
     for (var i = 0; i < delayed.length; ++i) delayed[i]();
   }
 
-  // The DOM events that CodeMirror handles can be overridden by
+  // The DOM Event that CodeMirror handles can be overridden by
   // registering a (non-DOM) handler on the editor for the event name,
   // and preventDefault-ing the event in that handler.
   function signalDOMEvent(cm, e, override) {
@@ -7183,7 +7183,7 @@
   }
 
   // Add on and off methods to a constructor's prototype, to make
-  // registering events on such objects more convenient.
+  // registering Event on such objects more convenient.
   function eventMixin(ctor) {
     ctor.prototype.on = function(type, f) {on(this, type, f);};
     ctor.prototype.off = function(type, f) {off(this, type, f);};

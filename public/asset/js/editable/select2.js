@@ -195,9 +195,9 @@ the specific language governing permissions and limitations under the Apache Lic
     });
 
     /**
-     * filters mouse events so an event is fired only if the mouse moved.
+     * filters mouse Event so an event is fired only if the mouse moved.
      *
-     * filters out mouse events that occur when mouse is stationary but
+     * filters out mouse Event that occur when mouse is stationary but
      * the elements under the pointer are scrolled.
      */
     function installFilteredMouseMove(element) {
@@ -446,7 +446,7 @@ the specific language governing permissions and limitations under the Apache Lic
                     dataType: options.dataType,
                     data: data,
                     success: function (data) {
-                        // TODO - replace query.page with query so users have access to term, page, etc.
+                        // TODO - replace query.page with query so Event have access to term, page, etc.
                         var results = options.results(data, query.page);
                         query.callback(results);
                     }
@@ -689,7 +689,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 .data("select2", this)
                 .attr("tabindex", "-1")
                 .before(this.container)
-                .on("click.select2", killEvent); // do not leak click events
+                .on("click.select2", killEvent); // do not leak click Event
 
             this.container.data("select2", this);
 
@@ -749,8 +749,8 @@ the specific language governing permissions and limitations under the Apache Lic
                 }
             }));
 
-            // trap all mouse events from leaving the dropdown. sometimes there may be a modal that is listening
-            // for mouse events outside of itself so it can close itself. since the dropdown is now outside the select2's
+            // trap all mouse Event from leaving the dropdown. sometimes there may be a modal that is listening
+            // for mouse Event outside of itself so it can close itself. since the dropdown is now outside the select2's
             // dom it will trigger the popup close, which is not what we want
             this.dropdown.on("click mouseup mousedown", function (e) { e.stopPropagation(); });
 
@@ -1325,7 +1325,7 @@ the specific language governing permissions and limitations under the Apache Lic
 
             this.dropdown.addClass("select2-drop-active");
 
-            // attach listeners to events that can change the position of the container and thus require
+            // attach listeners to Event that can change the position of the container and thus require
             // the position of the dropdown to be updated as well so it does not come unglued from the container
             var that = this;
             this.container.parents().add(window).each(function () {
@@ -3173,7 +3173,7 @@ the specific language governing permissions and limitations under the Apache Lic
         return (value === undefined) ? this : value;
     };
 
-    // plugin defaults, accessible to users
+    // plugin defaults, accessible to Event
     $.fn.select2.defaults = {
         width: "copy",
         loadMorePadding: 0,

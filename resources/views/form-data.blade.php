@@ -8,7 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Hi</h1>
 <form action="/data-handle/form" method="post">
     @csrf
     <input type="text" name="eventName">

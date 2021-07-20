@@ -1444,11 +1444,11 @@ for (var func in conversions) {
   // export rgb2hsl and ["rgb"]["hsl"]
   convert[from] = convert[from] || {};
 
-  convert[from][to] = convert[func] = (function(func) { 
+  convert[from][to] = convert[func] = (function(func) {
     return function(arg) {
       if (typeof arg == "number")
         arg = Array.prototype.slice.call(arguments);
-      
+
       var val = conversions[func](arg);
       if (typeof val == "string" || val === undefined)
         return val; // keyword
@@ -1476,12 +1476,12 @@ Converter.prototype.routeSpace = function(space, args) {
    }
    // color.rgb(10, 10, 10)
    if (typeof values == "number") {
-      values = Array.prototype.slice.call(args);        
+      values = Array.prototype.slice.call(args);
    }
 
    return this.setValues(space, values);
 };
-  
+
 /* Set the values for a space, invalidating cache */
 Converter.prototype.setValues = function(space, values) {
    this.space = space;
@@ -3476,8 +3476,8 @@ module.exports = function(Chart) {
 			var me = this;
 			if (me.request === null) {
 				// Skip animation frame requests until the active one is executed.
-				// This can happen when processing mouse events, e.g. 'mousemove'
-				// and 'mouseout' events will trigger multiple renders.
+				// This can happen when processing mouse Event, e.g. 'mousemove'
+				// and 'mouseout' Event will trigger multiple renders.
 				me.request = helpers.requestAnimFrame.call(window, function() {
 					me.request = null;
 					me.startDigest();
@@ -9669,15 +9669,15 @@ module.exports = function(Chart) {
 	var helpers = Chart.helpers;
 
 	// DOM event types -> Chart.js event types.
-	// Note: only events with different types are mapped.
+	// Note: only Event with different types are mapped.
 	// https://developer.mozilla.org/en-US/docs/Web/Events
 	var eventTypeMap = {
-		// Touch events
+		// Touch Event
 		touchstart: 'mousedown',
 		touchmove: 'mousemove',
 		touchend: 'mouseup',
 
-		// Pointer events
+		// Pointer Event
 		pointerenter: 'mouseenter',
 		pointerdown: 'mousedown',
 		pointermove: 'mousemove',
@@ -9787,7 +9787,7 @@ module.exports = function(Chart) {
 			'height:100%;'+
 			'width:100%;'+
 			'position:absolute;'+
-			'pointer-events:none;'+
+			'pointer-Event:none;'+
 			'z-index:-1;';
 
 		// Prevent the iframe to gain focus on tab.
@@ -10009,9 +10009,9 @@ module.exports = function(Chart) {
 	 * @prop {String} type - The event type name, possible values are:
 	 * 'contextmenu', 'mouseenter', 'mousedown', 'mousemove', 'mouseup', 'mouseout',
 	 * 'click', 'dblclick', 'keydown', 'keypress', 'keyup' and 'resize'
-	 * @prop {*} native - The original native event (null for emulated events, e.g. 'resize')
-	 * @prop {Number} x - The mouse x position, relative to the canvas (null for incompatible events)
-	 * @prop {Number} y - The mouse y position, relative to the canvas (null for incompatible events)
+	 * @prop {*} native - The original native event (null for emulated Event, e.g. 'resize')
+	 * @prop {Number} x - The mouse x position, relative to the canvas (null for incompatible Event)
+	 * @prop {Number} y - The mouse y position, relative to the canvas (null for incompatible Event)
 	 */
 
 	Chart.helpers.extend(Chart.platform, implementation(Chart));

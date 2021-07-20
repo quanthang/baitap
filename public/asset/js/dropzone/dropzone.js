@@ -104,10 +104,10 @@
 
 
     /*
-    This is a list of all available events you can register on a dropzone object.
-    
+    This is a list of all available Event you can register on a dropzone object.
+
     You can register an event handler like this:
-    
+
         dropzone.on("dragEnter", function() { });
      */
 
@@ -221,7 +221,7 @@
       },
 
       /*
-      Those functions register themselves to the events on init and handle all
+      Those functions register themselves to the Event on init and handle all
       the user interface specific stuff. Overwriting them won't break the upload
       but can break the way it's displayed.
       You can overwrite them if you don't like the default behavior. If you just
@@ -1655,7 +1655,7 @@
 
 
   /*
-  
+
   Bugfix for iOS 6 and 7
   Source: http://stackoverflow.com/questions/11929099/html5-canvas-drawimage-ratio-bug-ios
   based on the work of https://github.com/stomita/ios-imagefile-megapixel

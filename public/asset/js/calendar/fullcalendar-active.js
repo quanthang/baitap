@@ -13,9 +13,9 @@ $(function() {
 			right: 'month,agendaWeek,agendaDay,listWeek'
 		},
 		editable: true,
-		eventLimit: true, // allow "more" link when too many events
+		eventLimit: true, // allow "more" link when too many Event
 		navLinks: true,
-		backgroundColor: '#1f2e86',   
+		backgroundColor: '#1f2e86',
 		eventTextColor: '#1f2e86',
 		textColor: '#378006',
 		dayClick: function(date, jsEvent, view) {

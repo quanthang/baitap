@@ -1923,7 +1923,7 @@
             if (!events) {
                 return;
             }
-            // fix bug, if events is defined with namespace
+            // fix bug, if Event is defined with namespace
             if (typeof events === 'string') {
                 events = calculateObjectValue(null, events);
             }

@@ -10,25 +10,26 @@
 <body>
 <h1>Event</h1>
 <ul>
-    <li>Name : {{$eventname}}</li>
-    <li>BandNames : {{$bandnames}}</li>
-    <li>Star Date : {{$startdate}}</li>
+    <li>Name :{{$eventname}}</li>
+    <li>BandNames : {{$bandname}}</li>
+    <li>Start Date : {{$startdate}}</li>
     <li>End Date : {{$enddate}}</li>
     <li>Port Folio : {{$portfolio}}</li>
     <li>Ticket Price : {{$ticketprice}}$</li>
     <li>Status :
         @switch($status)
-        @case(1)
-        Đang diễn ra
-        @break
-        @case(2)
-        Sắp diễn ra
-        @break
-        @case(3)
-        Đã diễn ra
-        @break
-        @case(0)
-        Tạm hoãn
+            @case(1)
+            Đang diễn ra
+            @break
+            @case(2)
+            Sắp diễn ra
+            @break
+            @case(3)
+            Đã diễn ra
+            @break
+            @case(0)
+            Tạm hoãn
+            @break
         @endswitch
     </li>
 </ul>
